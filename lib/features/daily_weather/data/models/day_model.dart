@@ -40,6 +40,21 @@ class Day {
       hours: setHours(jsonData['hour']),
     );
   }
+
+  factory Day.dummy() {
+    return Day(
+      dayOfWeek: '',
+      temp: '',
+      windSpeed: '',
+      vision: '',
+      humidity: '',
+      chanceOfRain: '',
+      chanceOfSnow: '',
+      weatherCondition: '',
+      moonCondition: '',
+      hours: [],
+    );
+  }
 }
 
 String setDayOfWeek(List<String> date) {

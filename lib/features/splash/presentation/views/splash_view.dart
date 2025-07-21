@@ -26,38 +26,36 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
+    final isDay = isDayTime;
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        alignment: Alignment.topCenter,
         padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 100),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              setTheme() ? Colors.amberAccent : Colors.black54,
-              Colors.white,
-            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
+            colors: isDay
+                ? [Colors.amberAccent, Colors.white]
+                : [Colors.black54, Colors.white],
           ),
         ),
         child: Column(
           children: [
             Image.asset(
-              setTheme() ? 'assets/clear.png' : 'assets/moon.png',
+              isDay ? 'assets/clear.png' : 'assets/moon.png',
               height: 175,
             ),
             const SizedBox(height: 150),
             const Text(
-              'Binding to location data',
+              'Fetching your location...',
               style: TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 16),
             LinearProgressIndicator(
-              color: setTheme() ? Colors.blueGrey.shade400 : Colors.amber,
-              backgroundColor:
-                  setTheme() ? Colors.amber : Colors.blueGrey.shade400,
+              color: isDay ? Colors.blueGrey.shade400 : Colors.amber,
+              backgroundColor: isDay ? Colors.amber : Colors.blueGrey.shade400,
             ),
           ],
         ),
@@ -107,11 +105,8 @@ class _SplashViewState extends State<SplashView> {
     onOpen(context);
   }
 
-  bool setTheme() {
-    if (TimeOfDay.now().hour >= 6 && TimeOfDay.now().hour < 18) {
-      return true;
-    } else {
-      return false;
-    }
+  bool get isDayTime {
+    final hour = TimeOfDay.now().hour;
+    return hour >= 6 && hour < 18;
   }
 }

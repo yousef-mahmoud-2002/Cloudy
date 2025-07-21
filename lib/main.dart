@@ -10,11 +10,11 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
-  runApp(const MyApp());
+  runApp(const Cloudy());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Cloudy extends StatelessWidget {
+  const Cloudy({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
         home: const SplashView(),
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          
           useMaterial3: false,
           appBarTheme: const AppBarTheme(color: kPrimaryColor),
         ),

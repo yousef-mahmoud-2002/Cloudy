@@ -12,7 +12,7 @@ class WeatherView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var weatherModel = BlocProvider.of<WeatherCubit>(context).weatherModel;
+    var weatherModel = context.watch<WeatherCubit>().weatherModel;
     return BlocBuilder<WeatherCubit, WeatherState>(
       builder: (context, state) {
         return Skeletonizer(

@@ -8,31 +8,8 @@ part 'weather_state.dart';
 class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit() : super(WeatherInitial());
 
-  late WeatherModel weatherModel = WeatherModel(
-    cityName: 'cityName',
-    lon: 'lon',
-    lat: 'lat',
-    temp: 'temp',
-    isDay: 0,
-    weatherCondition: 'clear',
-    windSpeed: 'windSpeed',
-    humidity: 'humidity',
-    cloud: 'cloud',
-    vision: 'vision',
-    days: [day, day, day],
-  );
-  Day day = Day(
-    dayOfWeek: 'date',
-    temp: 'avgTemp',
-    windSpeed: 'windSpeed',
-    vision: 'vision',
-    humidity: 'humidity',
-    moonCondition: '12',
-    chanceOfRain: 'chanceOfRain',
-    chanceOfSnow: 'chanceOfSnow',
-    weatherCondition: 'weatherCondition',
-    hours: [],
-  );
+  WeatherModel weatherModel = WeatherModel.dummy();
+  Day day = Day.dummy();
 
   Future<WeatherModel> getWeather(String cityName) async {
     try {

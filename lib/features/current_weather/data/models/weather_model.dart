@@ -42,4 +42,20 @@ class WeatherModel {
       days: setDays(jsonData['forecast']['forecastday']),
     );
   }
+
+  factory WeatherModel.dummy() {
+    return WeatherModel(
+      cityName: 'cairo',
+      lon: '30.05',
+      lat: '31.25',
+      temp: '20',
+      isDay: 1,
+      weatherCondition: 'sunny',
+      windSpeed: '20',
+      humidity: '20',
+      cloud: '20',
+      vision: '20',
+      days: [],
+    );
+  }
 }
